@@ -5,6 +5,25 @@ import (
 	"testing"
 )
 
+func TestErrors_Strings(t *testing.T) {
+	var errs Errors
+
+	errs = []error{errors.New("foo"), errors.New("bar")}
+	res := errs.Strings()
+
+	if l := len(res); l != 2 {
+		t.Fatalf("expected slice with 2 elements, got %v", l)
+	}
+
+	if s := res[0]; s != "foo" {
+		t.Fatalf("expected 'foo' at index 0, got '%v'", s)
+	}
+
+	if s := res[1]; s != "bar" {
+		t.Fatalf("expected 'bar' at index 1, got '%v'", s)
+	}
+}
+
 func TestFlatten(t *testing.T) {
 	errs := []error{
 		errors.New("1"),
