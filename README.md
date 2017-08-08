@@ -1,5 +1,5 @@
-# Description
-`nestederror` is a Go package for combining 2 errors together.
+# Description [![Build Status](https://travis-ci.org/ctit-team/nestederror.svg?branch=master)](https://travis-ci.org/ctit-team/nestederror) [![GoDoc](https://godoc.org/github.com/ctit-team/nestederror?status.svg)](https://godoc.org/github.com/ctit-team/nestederror)
+`nestederror` is a Go package for chaining multiple errors together.
 It's ability is similar to .NET `Exception.InnerException` or Java `Throwable.getCause`.
 
 # Installation
