@@ -54,3 +54,7 @@ func (e *NestedError) Inner() error {
 func (e *NestedError) Outer() error {
 	return e.outer
 }
+
+func (e *NestedError) String() string {
+	return Flatten(e).String()
+}

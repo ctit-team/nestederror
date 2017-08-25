@@ -1,5 +1,14 @@
 package nestederror
 
+import (
+	"strings"
+)
+
+var (
+	// Separator is a string to separate between error message, default is ' -> '.
+	Separator = " -> "
+)
+
 // Flatten flatten all errors into an Errors.
 func Flatten(err error) Errors {
 	if err == nil {
@@ -14,10 +23,14 @@ func Flatten(err error) Errors {
 // Errors is a collection of error.
 type Errors []error
 
+func (r Errors) String() string {
+	return strings.Join(r.Strings(), Separator)
+}
+
 // Strings return all error's string.
-func (s Errors) Strings() []string {
-	l := make([]string, 0, len(s))
-	for _, e := range s {
+func (r Errors) Strings() []string {
+	l := make([]string, 0, len(r))
+	for _, e := range r {
 		l = append(l, e.Error())
 	}
 	return l

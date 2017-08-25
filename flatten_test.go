@@ -5,6 +5,30 @@ import (
 	"testing"
 )
 
+func TestErrors_String_CustomSeparator(t *testing.T) {
+	var errs Errors
+
+	Separator = " > "
+
+	errs = []error{errors.New("foo"), errors.New("bar")}
+	res := errs.String()
+
+	if res != "foo > bar" {
+		t.Fatalf("expected 'foo > bar, got '%v'", res)
+	}
+}
+
+func TestErrors_String_DefaultSeparator(t *testing.T) {
+	var errs Errors
+
+	errs = []error{errors.New("foo"), errors.New("bar")}
+	res := errs.String()
+
+	if res != "foo -> bar" {
+		t.Fatalf("expected 'foo -> bar', got '%v'", res)
+	}
+}
+
 func TestErrors_Strings(t *testing.T) {
 	var errs Errors
 

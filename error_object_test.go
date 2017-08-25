@@ -12,15 +12,19 @@ func TestNestedError(t *testing.T) {
 	e := New(inner, outer)
 
 	if e := e.Error(); e != "bar" {
-		t.Fatalf("expect bar from Error, got %v", e)
+		t.Fatalf("expected bar from Error, got %v", e)
 	}
 
 	if e.Inner() == nil {
-		t.Fatal("expect non-nil from Inner")
+		t.Fatal("expected non-nil from Inner")
 	}
 
 	if e.Outer() == nil {
-		t.Fatal("expect non-nil from outer")
+		t.Fatal("expected non-nil from Outer")
+	}
+
+	if res := e.String(); res != "bar -> foo" {
+		t.Fatalf("expected 'bar -> foo' from String, got '%v'", res)
 	}
 }
 
