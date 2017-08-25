@@ -8,7 +8,11 @@ import (
 func TestErrors_String_CustomSeparator(t *testing.T) {
 	var errs Errors
 
+	oldsep := Separator
 	Separator = " > "
+	defer func() {
+		Separator = oldsep
+	}()
 
 	errs = []error{errors.New("foo"), errors.New("bar")}
 	res := errs.String()

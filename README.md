@@ -15,13 +15,14 @@ package main
 
 import (
     "errors"
+    "log"
 
     "github.com/ctit-team/nestederror"
 )
 
 func main() {
     if err := run(); err != nil {
-        nestederror.Fatalln(err)
+        log.Fatalln(err)
     }
 }
 
