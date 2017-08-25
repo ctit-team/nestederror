@@ -11,8 +11,8 @@ func TestNestedError(t *testing.T) {
 
 	e := New(inner, outer)
 
-	if e := e.Error(); e != "bar" {
-		t.Fatalf("expected bar from Error, got %v", e)
+	if e := e.Error(); e != "bar -> foo" {
+		t.Fatalf("expected 'bar -> foo' from String, got '%v'", e)
 	}
 
 	if e.Inner() == nil {
@@ -21,10 +21,6 @@ func TestNestedError(t *testing.T) {
 
 	if e.Outer() == nil {
 		t.Fatal("expected non-nil from Outer")
-	}
-
-	if res := e.String(); res != "bar -> foo" {
-		t.Fatalf("expected 'bar -> foo' from String, got '%v'", res)
 	}
 }
 

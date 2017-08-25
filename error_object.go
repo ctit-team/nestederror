@@ -42,7 +42,7 @@ func New(inner error, outer interface{}, args ...interface{}) *NestedError {
 }
 
 func (e *NestedError) Error() string {
-	return e.outer.Error()
+	return Flatten(e).String()
 }
 
 // Inner return the inner error.
@@ -53,8 +53,4 @@ func (e *NestedError) Inner() error {
 // Outer return the outer error.
 func (e *NestedError) Outer() error {
 	return e.outer
-}
-
-func (e *NestedError) String() string {
-	return Flatten(e).String()
 }
